@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Gary Go Blogs
+title: Gary's Blogs
 subtitle: '虢可为的博客'
 description: '虢可为的博客'
 keywords:
@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://github.com/supemeko/supemeko.github.io
+url: https://supemeko.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -104,4 +104,4 @@ deploy:
   type: git
   repo: https://github.com/supemeko/supemeko.github.io
   # example, https://github.com/hexojs/hexojs.github.io
-  branch: gh-pages
+  branch: main
