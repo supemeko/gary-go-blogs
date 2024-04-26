@@ -14,7 +14,7 @@ description: "最近开始学习一个开源的电商项目，最开始只是想
 cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 ---
 
-## 写在前面：
+## 写在前面
 
 ### 起因
 最近开始学习一个开源的电商项目Flutter Mall，最初只是想学习flutter，但是项目能够跑起来，被迫学习了很多知识。
@@ -33,10 +33,10 @@ cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 ### 叠个甲
 博主是初学者，难免会出现一些错误，请读者见谅。
 
-## 01-项目介绍：
+## 01-项目介绍
 后续会在这个开源项目上做一些二次开发，那么首先就是要介绍这个开源项目的情况。
 
-### 项目所使用的技术栈：
+### 项目所使用的技术栈
 - 移动端 Flutter Mall
     - 概述: 一个基于 Flutter 框架实现的电商系统移动端项目
     - Flutter: 使用 Flutter 框架进行跨平台移动应用开发
@@ -61,15 +61,15 @@ cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 可以看出这个项目的技术栈还是非常先进的。🙌
 里面用到的技术没有过多的封装，基本上都是官方提供的方案直接拿来用，适合学习。😎
 
-### 本人已掌握的技术栈：
+### 本人已掌握的技术栈
  - javascript/vue2开发Web页面
  - java spring cloud微服务开发
 
 什么都不会就慢慢学呗。🥲
 
-## 移动端Flutter Mall：
-`Flutter官方网站`：https://docs.flutter.dev/
-`Flutter视频教程`：itying.com Flutter 入门实战教程
+## 移动端Flutter Mall
+`Flutter官方网站`: https://docs.flutter.dev/
+`Flutter视频教程`: itying.com Flutter 入门实战教程
 
 1. 跟着视频了解Flutter如何安装，学习基础组件的使用。😀
     通过视频学习的好处是能够快速了解开发流程，缺点就是还需要重新看一遍官方文档，避免教程视频遗漏知识点。
@@ -95,7 +95,7 @@ Flutter的Weiget的状态发生变化后，根据Weiget的状态重新渲染Weig
 ✍️登录接口，前后端定义的用户名好像不一致，一个是username，一个是account。
 {% endnote %}
 
-## 后端Zero Admin：
+## 后端Zero Admin
 `Go语言官方地址`: https://go.dev/
 `go-zero git仓库`: https://github.com/zeromicro/go-zero
 `B站视频《go-zero零基础入门教程|go微服务开发必学教程》`: https://www.bilibili.com/video/BV1kM411X7Cp?p=1
@@ -117,12 +117,12 @@ Flutter的Weiget的状态发生变化后，根据Weiget的状态重新渲染Weig
 🔔使用makefile启动脚本中使用了`copy`，但是在linux环境执行make build可能会报错。
 {% endnote %}
 
-## 后台管理界面 Zero Admin UI：
+## 后台管理界面 Zero Admin UI
 `React`: https://react.dev/
-`Ant-Design-Pro官方地址` : https://pro.ant.design/
-`Ant-Design-Pro新手需知`： https://pro.ant.design/zh-CN/docs/introduction
+`Ant-Design-Pro官方地址`: https://pro.ant.design/
+`Ant-Design-Pro新手需知`: https://pro.ant.design/zh-CN/docs/introduction
 `ProComponents`: https://procomponents.ant.design/
-`B站视频《30分钟学会React18核心语法 可能是你学会React最好的机会 前端开发必会框架 无废话精品视频》`：https://www.bilibili.com/video/BV1pF411m7wV
+`B站视频《30分钟学会React18核心语法 可能是你学会React最好的机会 前端开发必会框架 无废话精品视频》`: https://www.bilibili.com/video/BV1pF411m7wV
 
 ![](/img/posts/studys-zero-mall/01-01-ant-design-pro.png "ANT DESIGN PRO")
 1. 《新手需知》要一个个看，务必弄清楚每个组件的作用。
@@ -134,7 +134,7 @@ Flutter的Weiget的状态发生变化后，根据Weiget的状态重新渲染Weig
 💡`npm run dev`在linux平台会可能报错，原因是代码中设置环境变量用到了`SET NODE_OPTIONS=--openssl-legacy-provider`，`SET`不是linux平台的命令。需要改成 `cross-env NODE_OPTIONS=--openssl-legacy-provider` 才能顺利启动项目。
 {% endnote %}
 
-## 写在后面：
+## 写在后面
 想要快速学习的话，个人建议先看B站教程或者那种培训课开发的课程。
 这些教程的能够让你熟悉一个完整的开发流程，这点不是官方教程能够提供的。
 如果你有几年开发经验，其实可以不用跟着教程步骤一步步走，2倍速看老师操作就好了，也不用动脑，就挺轻松的。
