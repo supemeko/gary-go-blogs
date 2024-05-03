@@ -17,7 +17,7 @@ cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 ## 写在前面
 ### 发生了什么
 后台管理系统的前端页面，没有处理服务端响应中的错误信息。
-后端响应{% label "200 OK" blue %}时，前端没有处理应答信息包含的错误信息。
+后端响应{% label "200 OK" blue %}时，前端没有处理http应答中包含的错误信息。
 
 ### 复现步骤
 1. 停止redis服务
@@ -25,14 +25,13 @@ cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 3. 打开 {% label '系统管理 > 用户列表' blue %} 页面
 4. 用户列表页面无数据且无错误提示
 
-经过观察，几乎所有页面，都不会对业务应答作出反应
+经过观察，几乎所有页面，都不会对http应答中以下信息作出反应
+`{code: 1001, message:'用户：admin,获取redis连接异常'}`
 
 ### 文章内容
 1. 后端应用分析
 2. 前端应用分析
-3. 多种解决方案及我的选择
-4. Ant-Design-Pro用户登录&目录&权限的处理
-4. 我对错误处理的看法
+3. 多种解决方案及最终的选择
 
 ## 后端应用分析
 ### 后端错误分析
@@ -368,7 +367,7 @@ const errorHandler = (error: any) => {
 ![错误复现](/img/posts/studys-zero-mall/02-02-image-2.png)
 {% endgallery %}
 
-## 多种解决方案及我的选择
+## 多种解决方案及最终的选择
 
 ### 可能的几种方案，以及优缺点
 1. 修改后端响应，使其在错误是返回非200，引起前端错误，引导程序弹出浮窗向用户报告错误
