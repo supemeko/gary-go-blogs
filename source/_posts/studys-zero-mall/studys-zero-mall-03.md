@@ -17,7 +17,7 @@ cover: https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png
 ## 介绍
 ### 概要
 本章节对移动端APP中，将完善收货地址的交互的功能。
-该页面位于移动端APP { % label 我的 > 地址管理 blue% }，目前已经完成列表展示、地址详情展示的功能。但是无法进行新建和修改地址信息的操作
+该页面位于移动端APP {% label '我的 > 地址管理' blue %}，目前已经完成列表展示、地址详情展示的功能。但是无法进行新建和修改地址信息的操作
 该章节主要内容包括：
 1. 页面交互逻辑以及相应后端改造。
 2. 获取设备信息，调用第三方接口优化用户体验。
@@ -273,7 +273,7 @@ appBar: AppBar(
 将代码中的`Color(int.parse('fa436a', radix: 16)).withAlpha(255)`
 替换为`Color(0xfffa436a)`
 使用正则表达式：
-- 搜索: `Color\(int\.parse\('([^']+)', radix: 16\)\)\.withAlpha\((255)\)`
+- 搜索: `Color\(int\.parse\('([^']+)', radix: 16\)\)[ \n]+\.withAlpha\((255)\)`
 - 替换为: `Color(0xff$1)`
 ##### 路由返回
 ``` dart
