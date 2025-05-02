@@ -1,6 +1,6 @@
 ---
 title: RustDesk源码学习笔记 07-关键类型，解决一个issue和结语
-date: 2025-03-02 18:18:00
+date: 2025-05-03 02:47:01
 updated:
 tags:
   - "文章"
@@ -55,7 +55,7 @@ flutter_rust_bridge提供同步调用的方式,以及提供流来传递信息。
 在rust表现为 StreamLink<T>.add(T message) 
 
 #### 事件
-rust里面实现了注册事件，取消注册事件，根据事件名称来路由等功能，经典模式。
+rust里面实现了注册事件，取消注册事件，根据事件名称来路由等功能，经典的时间处理模式。
 
 
 ### 解决一个issue
@@ -66,7 +66,8 @@ issue地址： https://github.com/rustdesk/rustdesk/issues/10005
    - ip地址直连 （好评如潮，我主要使用这种方式，ipv6直连真爽）
    - id + 私服地址
 2. rustdesk提供收藏节点的功能，客户端会定期请求收藏节点的在线状态
-问题出在虽然rustdesk允许通过“id + rustdesk服务器地址”控制电脑，这种方式连接的节点但不支持查询在线状态
+
+问题出在虽然rustdesk允许通过“id + rustdesk服务器地址”控制电脑，但是这种方式连接的节点但不支持查询在线状态
 
 #### 解决方案
 观察到rustdesk每次都建立新的请求获取节点在线状态且使用统一入口查询节点信息。
@@ -78,7 +79,7 @@ async fn query_online_states_(
   //...
 }
 ```
-函数签名如上，找到需要修改的位置。
+函数签名如上，这就是需要修改的位置。
 
 ```rust 
 //...
@@ -98,7 +99,7 @@ query_online_states_ 函数内包含以上代码
 let (rendezvous_server, _servers, _contained) = crate::get_rendezvous_server(READ_TIMEOUT).await;
 // 使用 rendezvous_server
 ```
-create_online_stream 函数则从全局变量取出服务器地址。
+而create_online_stream 函数则从全局变量取出服务器地址。
 
 ```rust
 async fn query_online_states_(
@@ -121,22 +122,22 @@ async fn query_online_states_(
 
 ```rust
 let ids: Vec<String> = ...;
-let groups: HashMap<String, Vec<String>> = ids.iter().map(...).fold(HashMap:new());
+let groups: HashMap<String, Vec<String>> = ids.iter().map(...).fold(HashMap:new(), || {...});
 for group in groups {
   let (on, off) = query_online_states_(group, Timeout)
   // 使用on和off
 }
 ```
-对ids分组获得多组"一组ids""和"rendezvous_server"的组合，
-应用函数query_online_states_，分别得到每组的结果。
-将结果合并，最后返回
+1. 对ids分组获得多组"一组ids""和"rendezvous_server"的组合，
+2. 应用函数query_online_states_，分别得到每组的结果。
+3. 将结果合并后返回
 
 #### 技术细节
 ids是 "id"和"id@服务器地址" 的组合，首先需要将id和服务器地址分离出来。
-这里主要是找项目中已有的方法，避免代码重复以及实现不统一的问题，这个工作挺费劲的。
+这里需要找项目中已有的方法，避免代码重复以及实现不统一的问题，这个工作挺费劲的。
 然后向服务器查询的是分离出来的id,但是结果要用id@服务器地址回报。
-所以groups改为{ server: { pure_id, id }[] }[]，其中id = pure_id@server
-结果合并的时候，需要将server返回的 pure_id 转换回id
+所以需要将groups改为{ server: { pure_id, id }[] }[]，其中id = pure_id@server
+结果合并的时候，需要将server返回的 pure_id 转换回 id
 
 #### 最后欣赏一下自己写的代码
 https://github.com/supemeko/rustdesk/commit/4432a3fef9c5e0f5dbc15626c0ac38500b8b4e66
